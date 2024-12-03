@@ -3,7 +3,7 @@
   "version": "6.0.0",
   "private": true,
   "author": {
-    "name": "Rohan Panghal",
+    "name": "Rohan Panghal"
   },
   "dependencies": {
     "@testing-library/jest-dom": "^5.17.0",
