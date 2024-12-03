@@ -36,7 +36,7 @@
 To get a local copy of the code, clone it using git:
 
 ```
-git clone https://github.com/SafdarJamal/quiz-app.git
+git clone https://github.com/Rohan569-panghal/Quiz-App.git
 cd quiz-app
 ```
 
