@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-
+import { DarkModeProvider } from '../DarkModeContext/DarkModeProvider';
 import Layout from '../Layout';
 import Loader from '../Loader';
 import Main from '../Main';
@@ -73,7 +73,7 @@ const App = () => {
     setLoading(true);
     setLoadingMessage({
       title: 'Loading the home screen.',
-      message: 'Thank you for playing!',
+      message: 'Thank you for checking your Knowledge!',
     });
 
     setTimeout(() => {
@@ -87,18 +87,21 @@ const App = () => {
   };
 
   return (
-    <Layout>
-      {loading && <Loader {...loadingMessage} />}
-      {!loading && !isQuizStarted && !isQuizCompleted && (
-        <Main startQuiz={startQuiz} />
-      )}
-      {!loading && isQuizStarted && (
-        <Quiz data={data} countdownTime={countdownTime} endQuiz={endQuiz} />
-      )}
-      {!loading && isQuizCompleted && (
-        <Result {...resultData} replayQuiz={replayQuiz} resetQuiz={resetQuiz} />
-      )}
-    </Layout>
+    <DarkModeProvider>
+      <Layout>
+
+        {loading && <Loader {...loadingMessage} />}
+        {!loading && !isQuizStarted && !isQuizCompleted && (
+          <Main startQuiz={startQuiz} />
+        )}
+        {!loading && isQuizStarted && (
+          <Quiz data={data} countdownTime={countdownTime} endQuiz={endQuiz} />
+        )}
+        {!loading && isQuizCompleted && (
+          <Result {...resultData} replayQuiz={replayQuiz} resetQuiz={resetQuiz} />
+        )}
+      </Layout>
+    </DarkModeProvider>
   );
 };
 

@@ -124,6 +124,16 @@ const CATEGORIES = [
     text: 'Entertainment: Cartoon & Animations',
     value: 32,
   },
+  {
+    key: 33,
+    text: 'Health',
+    value: 33,
+  },
+  {
+    key:34,
+    text: 'Engineering' ,
+    value: 34,
+  },
 ];
 
 export default CATEGORIES;
