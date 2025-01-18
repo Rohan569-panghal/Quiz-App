@@ -66,32 +66,33 @@ const Main = ({ startQuiz }) => {
     if (error) setError(null);
 
     const API = `http://127.0.0.5:5000/api/questions?difficulty=${difficulty}&type=${questionsType}&limit=${numOfQuestions}`;
-    // `https://opentdb.com/api.php?amount=${numOfQuestions}&category=${category}&difficulty=${difficulty}&type=${questionsType}`
-    // https://opentdb.com/api.php?amount=5&category=0&difficulty=easy&type=0
-    // alert(API);
+    
     console.log(API);
 
     fetch(API)
       .then(respone => respone.json())
-      .then(data =>
+      .then(data => {
+        const data1 = data
+        
         setTimeout(() => {
-          data = {
-            "response_code": 0,}
+          let data = data1
+          console.log(data);
+          
           const max_questions = `${numOfQuestions}`;
           var difficulty_level = `${difficulty}`;
           if(difficulty_level!='0'){
-            data.results = data.results.filter(question => question.difficulty === difficulty_level);
+            data = data.filter(question => question.difficulty === difficulty_level);
           }
           var ques_type = `${questionsType}`;
           if(ques_type!='0'){
-            data.results = data.results.filter(question => question.type === ques_type);
+            data = data.filter(question => question.type === ques_type);
           }
-          data.results = data.results.sort(() => Math.random() - 0.5).slice(0, max_questions);
-          // data.results = data.results.filter(question => question.difficulty === difficulty_level).sort(() => Math.random() - 0.5).slice(0, max_questions);
+          data = data.sort(() => Math.random() - 0.5).slice(0, max_questions);
+          data = data.filter(question => question.difficulty === difficulty_level).sort(() => Math.random() - 0.5).slice(0, max_questions);
           
-          // console.log(data.results);
+          console.log(data);
 
-          // console.log(data["results"]);
+          console.log(data["results"]);
           const { response_code, results } = data;
 
           if (response_code === 1) {
@@ -113,7 +114,7 @@ const Main = ({ startQuiz }) => {
             return;
           }
 
-          results.forEach(element => {
+          data.forEach(element => {
             element.options = shuffle([
               element.correct_answer,
               ...element.incorrect_answers,
@@ -122,10 +123,13 @@ const Main = ({ startQuiz }) => {
 
           setProcessing(false);
           startQuiz(
-            results,
+            data,
             countdownTime.hours + countdownTime.minutes + countdownTime.seconds
           );
-        }, 1000)
+        }
+        , 1000)
+      }
+
       )
       .catch(error =>
         setTimeout(() => {
