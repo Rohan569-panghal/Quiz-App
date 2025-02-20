@@ -83,56 +83,39 @@ To enhance the backend for the Quiz Application by implementing the following fe
 #### Commands Executed:
 
 - Updated the `Quiz.js` component:
-  ```sh
   touch src/components/Quiz.js
-  Output Shown:
+ ### Output Shown:
 ✔ The "Previous" button navigates correctly to earlier questions.
 
 Verify it is Deployed:
 ✔ Tested edge cases, ensuring the button is disabled on the first question.
 
-Step 3: Highlight Selected Answers
-Commands Executed:
-Updated the Quiz.js component:
-sh
-Copy
-Edit
+### Step 3: Highlight Selected Answers
+### Commands Executed:
+- Updated the Quiz.js component:
 nano src/components/Quiz.js
-Output Shown:
+### Output Shown:
 ✔ Selected answers are visually highlighted, enhancing the user experience.
 
-Verify it is Deployed:
+### Verify it is Deployed:
 ✔ Tested various answer selections to ensure correct styling and feedback.
 
-Step 4: Fetch Data from MongoDB API
-Commands Executed:
+### Step 4: Fetch Data from MongoDB API
+### Commands Executed:
 Setup MongoDB Connection:
-sh
-Copy
-Edit
 mkdir backend/db
 touch backend/db/connection.js
 Install Dependencies:
 
-sh
-Copy
-Edit
 npm install express mongoose
 Define Quiz Schema in Backend:
 
 In the backend directory, define the schema and the model.
-sh
-Copy
-Edit
 touch backend/quizModel.js
 Create API Routes for Quiz:
 
 Define the API routes in index.js.
 Start the Server:
-
-sh
-Copy
-Edit
 node index
 Output Shown:
 ✔ Fetched quiz data dynamically from MongoDB and rendered it in the frontend.
